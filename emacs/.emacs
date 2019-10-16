@@ -1,3 +1,10 @@
+; Key Name    Keyboard
+; M   Meta    Alt
+; A   Meta    Alt
+; C   Control Ctrl
+; S   Shift   Shift
+; SPC Space   Space
+
 (require 'package)
 
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
