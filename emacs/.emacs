@@ -22,7 +22,7 @@
 		     shell-pop
 		     cheatsheet
 		     dashboard
-                     multiple-cursors
+             multiple-cursors
 		     python-mode))
 
 (package-initialize)
@@ -47,7 +47,6 @@
 (require 'cheatsheet)
 (require 'multiple-cursors)
 (require 'dashboard)
-(require 'multiple-cursors)
 
 (setq default-directory "~/")
 (setq inhibit-splash-screen t)
@@ -69,7 +68,7 @@
 		      '(:key "F8" :description "Expand region")
 		      '(:key "F7" :description "Contract region")
 		      '(:key "F6" :description "Highlight at cursor")
-		      '(:key "F5" :description "Undo Tree")
+		      '(:key "F5" :description "Undo Tree, q to exit")
 		      '(:key "F4" :description "(Un)comment")
 		      '(:key "F3" :description "Go to line")
 		      '(:key "F2" :description "Open a file")
@@ -101,7 +100,8 @@
 		      '(:key "C-z or F5" :description "Undo")
 		      '(:key "C-c C-r f" :description "Format code")
 		      '(:key "M-left/right" :description "To indent")
-		      '(:key "C-f" :description "Toggle folding"))
+		      '(:key "C-f" :description "Toggle folding")
+		      '(:key "C-c C-m" :description "multiple-cursors"))
 
 
 (defvar cheatsheet-visible t "Check if help buffer is visible")
@@ -167,38 +167,28 @@
 ;; ToDo: solve moving line/region up and down....
 (global-set-key (kbd "ESC <up>")    'elpy-nav-move-line-or-region-up)
 (global-set-key (kbd "ESC <down>")  'elpy-nav-move-line-or-region-down)
-
 (global-set-key (kbd "ESC <left>")  'elpy-nav-indent-shift-left)
 (global-set-key (kbd "ESC <right>") 'elpy-nav-indent-shift-right)
-(global-set-key (kbd "C-M-<left>")  'indent-rigidly-left)
-(global-set-key (kbd "C-M-<right>") 'indent-rigidly-right)
 
 (global-display-line-numbers-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;; python ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (elpy-enable)
-;; (multiple-cursors-mode)
-;; (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(multiple-cursors-mode)
+(global-set-key (kbd "C-c C-m") 'set-rectangular-region-anchor)
 
 (setq python-indent-guess-indent-offset-verbose nil)
 (setq-default indent-tabs-mode nil)
 
 (add-hook 'python-mode-hook
-	  (lambda ()
-	    (setq tab-width 4)
-	    (setq python-indent-offset 4)
- 	    (setq-default show-trailing-whitespace t)))
+     (lambda ()
+        (setq tab-width 4)
+        (setq python-indent-offset 4)
+        (setq-default show-trailing-whitespace t)))
 
 (add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
 (add-hook 'elpy-mode-hook (lambda () (hs-minor-mode)))
-
-(eval-after-load "elpy"
-  '(cl-dolist (key '("C-M-<up>" "C-M-<down>"))
-     (define-key elpy-mode-map (kbd "C-M-<up>")   'elpy-nav-move-line-or-region-up)
-     (define-key elpy-mode-map (kbd "C-M-<down>") 'elpy-nav-move-line-or-region-down)
-   )
-)
 
 (setq python-shell-interpreter "ipython" python-shell-interpreter-args "-i --simple-prompt")
 
