@@ -11,26 +11,26 @@
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
 
 (setq package-list '(elpy
-		     highlight-thing
-		     expand-region
-		     autopair
-		     neotree
-		     git-gutter
-		     duplicate-thing
-		     monokai-theme
-		     undo-tree
-		     helm-swoop
-		     flycheck
-		     better-defaults
-		     use-package
-		     smart-mode-line-powerline-theme
-		     counsel
-		     counsel-tramp
-		     shell-pop
-		     cheatsheet
-		     dashboard
+                     highlight-thing
+                     expand-region
+                     autopair
+                     neotree
+                     git-gutter
+                     duplicate-thing
+                     monokai-theme
+                     undo-tree
+                     helm-swoop
+                     flycheck
+                     better-defaults
+                     use-package
+                     smart-mode-line-powerline-theme
+                     counsel
+                     counsel-tramp
+                     shell-pop
+                     cheatsheet
+                     dashboard
                      multiple-cursors
-		     python-mode))
+                     python-mode))
 
 (package-initialize)
 
@@ -68,29 +68,29 @@
 
 ;; (global-set-key [f12] 'cheatsheet-show)
 (cheatsheet-add-group '"F'ing keys"
-		      '(:key "F12" :description "Toggle cheatsheet buffer")
-		      '(:key "F11" :description "Show shell window")
-		      '(:key "F10" :description "Multi edit under cursor")
-		      '(:key "F9" :description "Remote/ssh edit")
-		      '(:key "F8" :description "Expand region")
-		      '(:key "F7" :description "Contract region")
-		      '(:key "F6" :description "Highlight at cursor")
-		      '(:key "F5" :description "Undo Tree, q to exit")
-		      '(:key "F4" :description "(Un)comment")
-		      '(:key "F3" :description "Go to line")
-		      '(:key "F2" :description "Open a file")
-		      '(:key "F1" :description "Switch to a buffer"))
+                      '(:key "F12" :description "Toggle cheatsheet buffer")
+                      '(:key "F11" :description "Show shell window")
+                      '(:key "F10" :description "Multi edit under cursor")
+                      '(:key "F9" :description "Remote/ssh edit")
+                      '(:key "F8" :description "Expand region")
+                      '(:key "F7" :description "Contract region")
+                      '(:key "F6" :description "Highlight at cursor")
+                      '(:key "F5" :description "Undo Tree, q to exit")
+                      '(:key "F4" :description "(Un)comment")
+                      '(:key "F3" :description "Go to line")
+                      '(:key "F2" :description "Open a file")
+                      '(:key "F1" :description "Switch to a buffer"))
 
 (cheatsheet-add-group '"Windows"
-		      '(:key "C-c up/down/etc" :description "Switch to another window")
-		      '(:key "C-c k" :description "Kill current window")
-		      '(:key "C-c +" :description "Enlarge window")
-		      '(:key "C-c -" :description "Shrink window"))
+                      '(:key "C-c up/down/etc" :description "Switch to another window")
+                      '(:key "C-c k" :description "Kill current window")
+                      '(:key "C-c +" :description "Enlarge window")
+                      '(:key "C-c -" :description "Shrink window"))
 
 (cheatsheet-add-group '"Search"
-		      '(:key "C-s" :description "Search")
-		      '(:key "M-i" :description "Search under cursor")
-		      '(:key "M-." :description "Jump to Definition"))
+                      '(:key "C-s" :description "Search")
+                      '(:key "M-i" :description "Search under cursor")
+                      '(:key "M-." :description "Jump to Definition"))
 
 (cheatsheet-add-group '"Basic"
                       '(:key "C-x" :description "Cut")
@@ -102,13 +102,13 @@
                       '(:key "C-x C-c" :description "Exit"))
 
 (cheatsheet-add-group '"Manipulate"
-		      '(:key "C-d" :description "Duplicate line/region")
-		      '(:key "M-up/down" :description "Move line/region")
-		      '(:key "C-z or F5" :description "Undo")
-		      '(:key "C-c C-r f" :description "Format code")
-		      '(:key "M-left/right" :description "To indent")
-		      '(:key "C-f" :description "Toggle folding")
-		      '(:key "C-c C-m" :description "multiple-cursors"))
+                      '(:key "C-d" :description "Duplicate line/region")
+                      '(:key "M-up/down" :description "Move line/region")
+                      '(:key "C-z or F5" :description "Undo")
+                      '(:key "C-c C-r f" :description "Format code")
+                      '(:key "M-left/right" :description "To indent")
+                      '(:key "C-f" :description "Toggle folding")
+                      '(:key "C-c C-m" :description "multiple-cursors"))
 
 
 (defvar cheatsheet-visible t "Check if help buffer is visible")
@@ -235,16 +235,16 @@
 (defun comment-current-line-or-region ()
   (interactive)
   (let ((start (line-beginning-position))
-	(end (line-end-position)))
+        (end (line-end-position)))
     (when (or (not transient-mark-mode) (region-active-p))
       (setq start (save-excursion
-		    (goto-char (region-beginning))
-		    (beginning-of-line)
-		    (point))
-	    end (save-excursion
-		  (goto-char (region-end))
-		  (end-of-line)
-		  (point))))
+                    (goto-char (region-beginning))
+                    (beginning-of-line)
+                    (point))
+            end (save-excursion
+                  (goto-char (region-end))
+                  (end-of-line)
+                  (point))))
     (comment-or-uncomment-region start end)))
 
  (global-set-key [f4] 'comment-current-line-or-region)
@@ -385,4 +385,5 @@
     (set-keymap-parent input-decode-map map))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (set-default 'truncate-lines t)
