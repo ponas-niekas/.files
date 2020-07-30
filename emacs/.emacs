@@ -29,7 +29,7 @@
 		     shell-pop
 		     cheatsheet
 		     dashboard
-             multiple-cursors
+                     multiple-cursors
 		     python-mode))
 
 (package-initialize)
@@ -383,3 +383,6 @@
     (let ((map (copy-keymap xterm-function-map)))
     (set-keymap-parent map (keymap-parent input-decode-map))
     (set-keymap-parent input-decode-map map))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(set-default 'truncate-lines t)
