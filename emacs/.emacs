@@ -30,6 +30,8 @@
                      cheatsheet
                      dashboard
                      multiple-cursors
+                     nix-mode
+                     json-mode
                      python-mode))
 
 (package-initialize)
