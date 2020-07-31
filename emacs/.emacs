@@ -1,4 +1,7 @@
+;;; package --- My Config
+
 ; Key Name    Keyboard
+;----------------------
 ; M   Meta    Alt
 ; A   Meta    Alt
 ; C   Control Ctrl
@@ -32,7 +35,8 @@
                      multiple-cursors
                      nix-mode
                      json-mode
-                     python-mode))
+                     python-mode
+                     xclip))
 
 (package-initialize)
 
@@ -146,7 +150,7 @@
     ("ansi-term" "*ansi-term*"
      (lambda nil
        (ansi-term shell-pop-term-shell)))))
- '(shell-pop-term-shell "/bin/bash")
+ '(shell-pop-term-shell "~/.nix-profile/bin/zsh")
  '(shell-pop-window-position "bottom")
  '(shell-pop-window-size 30))
 
@@ -214,7 +218,11 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(cua-mode 1)
+(cua-mode t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(xclip-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; undo tree mode                                                         ;;
@@ -281,9 +289,9 @@
 (setq term-char-mode-buffer-read-only nil)
 (setq term-char-mode-point-at-process-mark nil)
 
-(setq mouse-yank-at-point t)
-(setq select-enable-clipboard t)
 (setq mouse-drag-copy-region t)
+(setq mouse-yank-at-point t)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -352,10 +360,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(global-set-key (kbd "C-h") 'backward-kill-word)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (global-set-key (kbd "C-c <left>")  'windmove-left)
 (global-set-key (kbd "C-c <right>") 'windmove-right)
 (global-set-key (kbd "C-c <up>")    'windmove-up)
@@ -389,3 +393,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (set-default 'truncate-lines t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
