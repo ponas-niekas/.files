@@ -64,7 +64,6 @@
 (setq default-directory "~/")
 (setq inhibit-splash-screen t)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (dashboard-setup-startup-hook)
@@ -291,7 +290,8 @@
 
 (setq mouse-drag-copy-region t)
 (setq mouse-yank-at-point t)
-
+(setq select-active-regions 'only)
+(setq select-enable-primary t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
