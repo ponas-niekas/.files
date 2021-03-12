@@ -8,7 +8,7 @@ git clone https://github.com/ponas-niekas/.files.git
 ```bash
 sudo add-apt-repository ppa:kelleyk/emacs
 sudo apt-get update
-sudo apt install emacs26-nox
+sudo apt install emacs27-nox
 sudo pip install rope jedi flake8 autopep8 yapf
 
 cd
