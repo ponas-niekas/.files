@@ -140,17 +140,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   (quote
-    ("ab564a7ce7f2b2ad9e2cfe9fe1019b5481809dd7a0e36240c9139e230cc2bc32" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+   '("ab564a7ce7f2b2ad9e2cfe9fe1019b5481809dd7a0e36240c9139e230cc2bc32" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default))
  '(package-selected-packages
-   (quote
-    (multiple-cursors yapfify dashboard cheatsheet counsel-tramp highlight-thing python-mode use-package better-defaults flycheck helm-swoop undo-tree monokai-theme git-gutter elpy duplicate-thing)))
+   '(multiple-cursors yapfify dashboard cheatsheet counsel-tramp highlight-thing python-mode use-package better-defaults flycheck helm-swoop undo-tree monokai-theme git-gutter elpy duplicate-thing))
  '(shell-pop-full-span t)
  '(shell-pop-shell-type
-   (quote
-    ("ansi-term" "*ansi-term*"
+   '("ansi-term" "*ansi-term*"
      (lambda nil
-       (ansi-term shell-pop-term-shell)))))
+       (ansi-term shell-pop-term-shell))))
  '(shell-pop-term-shell "~/.nix-profile/bin/zsh")
  '(shell-pop-window-position "bottom")
  '(shell-pop-window-size 30))
@@ -395,7 +392,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(whitespace-tab ((t (:background "red")))))
 
 (defadvice terminal-init-screen
   ;; The advice is named `tmux', and is run before `terminal-init-screen' runs.
@@ -417,8 +414,13 @@
 ;;; Show "empty" lines with unessary spaces
 
 (setq whitespace-style '(face tabs tab-mark trailing))
-(custom-set-faces
- '(whitespace-tab ((t (:background "red")))))
+
 (global-whitespace-mode) ; Enable whitespace mode everywhere
+
+(defun my/disable-scroll-bars (frame)
+  (modify-frame-parameters frame
+                           '((vertical-scroll-bars . nil)
+                             (horizontal-scroll-bars . nil))))
+(add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
