@@ -196,6 +196,11 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;; python ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+(setq popup-use-optimized-column-computation nil)
+
+
 (elpy-enable)
 (multiple-cursors-mode)
 (global-set-key (kbd "C-c C-m") 'set-rectangular-region-anchor)
